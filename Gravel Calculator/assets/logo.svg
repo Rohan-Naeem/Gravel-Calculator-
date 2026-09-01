@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 72 72" role="img" aria-labelledby="logoIconTitle">
+  <title id="logoIconTitle">Gravel Calculator icon</title>
+  <rect x="0" y="0" width="72" height="72" rx="16" fill="#4A5D3A"/>
+  <circle cx="24" cy="46" r="9" fill="#F6F2E9"/>
+  <circle cx="38" cy="30" r="11" fill="#F6F2E9"/>
+  <circle cx="52" cy="48" r="8.5" fill="#C9B896"/>
+  <circle cx="41" cy="54" r="6" fill="#C9B896"/>
+</svg>

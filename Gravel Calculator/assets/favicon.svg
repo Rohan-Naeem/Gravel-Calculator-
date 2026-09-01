@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-labelledby="faviconTitle">
+  <title id="faviconTitle">Gravel Calculator favicon</title>
+  <rect x="0" y="0" width="64" height="64" rx="14" fill="#4A5D3A"/>
+  <circle cx="22" cy="40" r="9" fill="#F6F2E9"/>
+  <circle cx="36" cy="26" r="11" fill="#F6F2E9"/>
+  <circle cx="47" cy="42" r="7" fill="#C9B896"/>
+</svg>
