@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Gravel Calculator — Estimate Gravel Volume for Any Project</title>
-  <meta name="description" content="Free online gravel calculator. Enter length, width, and depth to estimate area, cubic feet, and cubic yards of gravel needed for driveways, paths, and patios.">
+  <meta name="description" content="Free gravel calculator to estimate the cubic yards, cubic feet, and tons of gravel for your project. Enter your dimensions and get quick material estimate.">
   <meta name="robots" content="index, follow">
   <link rel="canonical" href="https://gravel-calculator-nu.vercel.app">
   <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
@@ -68,76 +68,511 @@
           </ul>
         </div>
 
-        <div class="calc-card">
-          <h2>Gravel Calculator</h2>
-          <p class="calc-sub">Fill in your project measurements below.</p>
-          <form id="gravel-calculator-form" novalidate>
-            <div class="field-row">
-              <div class="field">
-                <label for="length">Length</label>
-                <input type="number" id="length" name="length" step="any" min="0" placeholder="e.g. 20" required>
-              </div>
-              <div class="field">
-                <label for="width">Width</label>
-                <input type="number" id="width" name="width" step="any" min="0" placeholder="e.g. 10" required>
-              </div>
-            </div>
-            <div class="field-row">
-              <div class="field">
-                <label for="depth">Depth</label>
-                <input type="number" id="depth" name="depth" step="any" min="0" placeholder="e.g. 2" required>
-              </div>
-              <div class="field">
-                <label for="unit">Measurement Unit</label>
-                <select id="unit" name="unit">
-                  <option value="feet">Feet</option>
-                  <option value="meters">Meters</option>
-                  <option value="inches">Inches</option>
-                  <option value="centimeters">Centimeters</option>
-                </select>
-              </div>
-            </div>
-            <div class="field">
-              <label for="waste">Extra / Waste</label>
-              <select id="waste" name="waste">
-                <option value="0">0%</option>
-                <option value="5">5%</option>
-                <option value="10" selected>10%</option>
-                <option value="15">15%</option>
-                <option value="20">20%</option>
-              </select>
-            </div>
+       <div class="calc-card">
 
-            <div class="calc-actions">
-              <button type="submit" class="btn btn-primary">Calculate Gravel</button>
-              <button type="button" id="calc-reset" class="btn btn-secondary">Clear Calculator</button>
-            </div>
+  <!-- CALCULATOR HEADER -->
+  <div class="calc-header">
+    <div>
+      <span class="calc-eyebrow">PROJECT CALCULATOR</span>
+      <h2>Gravel Calculator</h2>
+      <p class="calc-sub">
+        Enter your project measurements to estimate the gravel you need.
+      </p>
+    </div>
 
-            <p class="calc-error" id="calc-error" role="alert" hidden></p>
+    <div class="calc-status">
+      <span class="status-dot"></span>
+      Ready
+    </div>
+  </div>
 
-            <div class="calc-results" id="calc-results" hidden>
-              <div class="results-grid">
-                <div class="result-item">
-                  <span class="result-label">Area</span>
-                  <span class="result-value" id="result-area">—</span>
-                </div>
-                <div class="result-item">
-                  <span class="result-label">Cubic Feet (adjusted)</span>
-                  <span class="result-value" id="result-cubic-feet">—</span>
-                </div>
-                <div class="result-item">
-                  <span class="result-label">Cubic Yards (adjusted)</span>
-                  <span class="result-value" id="result-cubic-yards">—</span>
-                </div>
-                <div class="result-item">
-                  <span class="result-label">Extra Added</span>
-                  <span class="result-value" id="result-waste">—</span>
-                </div>
-              </div>
-              <p class="calc-note">These figures are estimates. Actual gravel volume and weight vary by material type, moisture, and compaction. Depth conversions use the depth value entered above.</p>
-            </div>
-          </form>
+
+  <!-- CALCULATOR FORM -->
+  <form id="gravel-calculator-form" novalidate>
+
+
+    <!-- STEP 1 -->
+    <div class="calc-section-title">
+      <span class="calc-step">01</span>
+
+      <div>
+        <strong>Project Dimensions</strong>
+        <small>Enter the length, width and depth</small>
+      </div>
+    </div>
+
+
+    <!-- LENGTH + WIDTH -->
+    <div class="field-row">
+
+      <div class="field">
+        <label for="length">
+          Length
+        </label>
+
+        <div class="input-wrap">
+          <input
+            type="number"
+            id="length"
+            name="length"
+            step="any"
+            min="0"
+            placeholder="e.g. 20"
+            required
+          >
+
+          <span class="input-unit">units</span>
         </div>
+
+        <div class="quick-pick">
+          <span>Quick pick</span>
+
+          <button
+            type="button"
+            class="quick-value"
+            data-target="length"
+            data-value="10"
+          >
+            10
+          </button>
+
+          <button
+            type="button"
+            class="quick-value"
+            data-target="length"
+            data-value="20"
+          >
+            20
+          </button>
+
+          <button
+            type="button"
+            class="quick-value"
+            data-target="length"
+            data-value="30"
+          >
+            30
+          </button>
+
+          <button
+            type="button"
+            class="quick-value"
+            data-target="length"
+            data-value="50"
+          >
+            50
+          </button>
+        </div>
+      </div>
+
+
+      <div class="field">
+        <label for="width">
+          Width
+        </label>
+
+        <div class="input-wrap">
+          <input
+            type="number"
+            id="width"
+            name="width"
+            step="any"
+            min="0"
+            placeholder="e.g. 10"
+            required
+          >
+
+          <span class="input-unit">units</span>
+        </div>
+
+        <div class="quick-pick">
+          <span>Quick pick</span>
+
+          <button
+            type="button"
+            class="quick-value"
+            data-target="width"
+            data-value="5"
+          >
+            5
+          </button>
+
+          <button
+            type="button"
+            class="quick-value"
+            data-target="width"
+            data-value="10"
+          >
+            10
+          </button>
+
+          <button
+            type="button"
+            class="quick-value"
+            data-target="width"
+            data-value="15"
+          >
+            15
+          </button>
+
+          <button
+            type="button"
+            class="quick-value"
+            data-target="width"
+            data-value="20"
+          >
+            20
+          </button>
+        </div>
+      </div>
+
+    </div>
+
+
+    <!-- DEPTH + UNIT -->
+    <div class="field-row">
+
+      <div class="field">
+        <label for="depth">
+          Depth
+        </label>
+
+        <div class="input-wrap">
+          <input
+            type="number"
+            id="depth"
+            name="depth"
+            step="any"
+            min="0"
+            placeholder="e.g. 2"
+            required
+          >
+
+          <span class="input-unit">depth</span>
+        </div>
+
+        <div class="quick-pick">
+          <span>Quick pick</span>
+
+          <button
+            type="button"
+            class="quick-value"
+            data-target="depth"
+            data-value="1"
+          >
+            1
+          </button>
+
+          <button
+            type="button"
+            class="quick-value"
+            data-target="depth"
+            data-value="2"
+          >
+            2
+          </button>
+
+          <button
+            type="button"
+            class="quick-value"
+            data-target="depth"
+            data-value="3"
+          >
+            3
+          </button>
+
+          <button
+            type="button"
+            class="quick-value"
+            data-target="depth"
+            data-value="4"
+          >
+            4
+          </button>
+        </div>
+      </div>
+
+
+      <div class="field">
+        <label for="unit">
+          Measurement Unit
+        </label>
+
+        <select id="unit" name="unit">
+
+          <option value="feet">
+            Feet
+          </option>
+
+          <option value="meters">
+            Meters
+          </option>
+
+          <option value="inches">
+            Inches
+          </option>
+
+          <option value="centimeters">
+            Centimeters
+          </option>
+
+        </select>
+
+        <div class="option-note">
+          Choose the unit used for all dimensions.
+        </div>
+      </div>
+
+    </div>
+
+
+    <!-- STEP 2 -->
+    <div class="calc-section-title calc-section-spacing">
+
+      <span class="calc-step">02</span>
+
+      <div>
+        <strong>Extra Material</strong>
+        <small>Allow for waste and settling</small>
+      </div>
+
+    </div>
+
+
+    <!-- WASTE OPTIONS -->
+    <div class="waste-options">
+
+      <label class="waste-option">
+
+        <input
+          type="radio"
+          name="waste-option"
+          value="0"
+          data-waste-value="0"
+        >
+
+        <span class="waste-card">
+          <strong>0%</strong>
+          <small>No Extra</small>
+        </span>
+
+      </label>
+
+
+      <label class="waste-option">
+
+        <input
+          type="radio"
+          name="waste-option"
+          value="5"
+          data-waste-value="5"
+        >
+
+        <span class="waste-card">
+          <strong>5%</strong>
+          <small>Small Allowance</small>
+        </span>
+
+      </label>
+
+
+      <label class="waste-option">
+
+        <input
+          type="radio"
+          name="waste-option"
+          value="10"
+          data-waste-value="10"
+          checked
+        >
+
+        <span class="waste-card">
+          <strong>10%</strong>
+          <small>Recommended</small>
+        </span>
+
+      </label>
+
+
+      <label class="waste-option">
+
+        <input
+          type="radio"
+          name="waste-option"
+          value="15"
+          data-waste-value="15"
+        >
+
+        <span class="waste-card">
+          <strong>15%</strong>
+          <small>Extra Allowance</small>
+        </span>
+
+      </label>
+
+    </div>
+
+
+    <!-- KEEP EXISTING WASTE FIELD FOR JS -->
+    <div class="field hidden-waste-field">
+
+      <label for="waste">
+        Extra / Waste
+      </label>
+
+      <select id="waste" name="waste">
+
+        <option value="0">
+          0%
+        </option>
+
+        <option value="5">
+          5%
+        </option>
+
+        <option value="10" selected>
+          10%
+        </option>
+
+        <option value="15">
+          15%
+        </option>
+
+        <option value="20">
+          20%
+        </option>
+
+      </select>
+
+    </div>
+
+
+    <!-- ACTIONS -->
+    <div class="calc-actions">
+
+      <button
+        type="submit"
+        class="btn btn-primary"
+      >
+        Calculate Gravel
+      </button>
+
+      <button
+        type="button"
+        id="calc-reset"
+        class="btn btn-secondary"
+      >
+        Clear Calculator
+      </button>
+
+    </div>
+
+
+    <!-- ERROR -->
+    <p
+      class="calc-error"
+      id="calc-error"
+      role="alert"
+      hidden
+    ></p>
+
+
+    <!-- RESULTS -->
+    <div
+      class="calc-results"
+      id="calc-results"
+      hidden
+    >
+
+      <div class="result-heading">
+        <span class="result-check">✓</span>
+
+        <div>
+          <strong>Your Estimate</strong>
+          <small>Calculated from your project dimensions</small>
+        </div>
+      </div>
+
+
+      <div class="results-grid">
+
+        <div class="result-item result-primary">
+
+          <span class="result-label">
+            Cubic Yards
+          </span>
+
+          <span
+            class="result-value"
+            id="result-cubic-yards"
+          >
+            —
+          </span>
+
+        </div>
+
+
+        <div class="result-item">
+
+          <span class="result-label">
+            Area
+          </span>
+
+          <span
+            class="result-value"
+            id="result-area"
+          >
+            —
+          </span>
+
+        </div>
+
+
+        <div class="result-item">
+
+          <span class="result-label">
+            Cubic Feet
+          </span>
+
+          <span
+            class="result-value"
+            id="result-cubic-feet"
+          >
+            —
+          </span>
+
+        </div>
+
+
+        <div class="result-item">
+
+          <span class="result-label">
+            Extra Added
+          </span>
+
+          <span
+            class="result-value"
+            id="result-waste"
+          >
+            —
+          </span>
+
+        </div>
+
+      </div>
+
+
+      <p class="calc-note">
+        These figures are estimates. Actual gravel volume and
+        weight can vary based on material type, moisture,
+        compaction, and site conditions.
+      </p>
+
+    </div>
+
+  </form>
+
+</div>
       </div>
     </section>
 
